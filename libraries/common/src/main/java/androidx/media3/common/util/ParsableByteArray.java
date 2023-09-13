@@ -326,6 +326,9 @@ public final class ParsableByteArray {
 
   /** Reads the next four bytes as a signed value */
   public int readInt() {
+    if (data.length < position+1) {
+      return 1;
+    }
     return (data[position++] & 0xFF) << 24
         | (data[position++] & 0xFF) << 16
         | (data[position++] & 0xFF) << 8
